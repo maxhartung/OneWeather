@@ -11,7 +11,7 @@ class APICaller {
             URLQueryItem(name: "appid", value: Constants.API_KEY),
             URLQueryItem(name: "lon", value: String(location.longitude)),
             URLQueryItem(name: "lat", value: String(location.latitude)),
-            URLQueryItem(name: "exclude", value: "minutely,hourly,daily,alerts")
+            URLQueryItem(name: "exclude", value: "minutely,daily,alerts")
         ]
         
         let urlRequest = URLRequest(url: urlComponents.url!)
@@ -22,7 +22,12 @@ class APICaller {
             }
             
             do {
-                let weather = try JSONDecoder().decode(Weather.self, from: jsonData)
+                
+                let jsonDecoder = JSONDecoder()
+                
+                jsonDecoder.dateDecodingStrategy = .secondsSince1970
+                                
+                let weather = try jsonDecoder.decode(Weather.self, from: jsonData)
                 completion(weather)
             }catch {
                 completion(nil)
