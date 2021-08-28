@@ -86,12 +86,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E731EF1D26DA927D003DEDFA /* Interface */ = {
+		E731EF1D26DA927D003DEDFA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				E731EF1E26DA9289003DEDFA /* HomeViewModelDelegate.swift */,
 			);
-			path = Interface;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		E762A95626DA733400D36A5E = {
@@ -117,7 +117,7 @@
 		E762A96126DA733400D36A5E /* OneWeather */ = {
 			isa = PBXGroup;
 			children = (
-				E731EF1D26DA927D003DEDFA /* Interface */,
+				E731EF1D26DA927D003DEDFA /* Protocols */,
 				E765AE1D26DA74D3003EC79E /* Services */,
 				E762A99526DA745900D36A5E /* ViewControllers */,
 				E762A99426DA744D00D36A5E /* Models */,
