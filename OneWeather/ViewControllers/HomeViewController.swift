@@ -7,7 +7,6 @@ class HomeViewController: UIViewController {
     
     let currentTemp : UILabel = {
         let label = UILabel()
-        label.textColor = .black
         return label
     }()
     
