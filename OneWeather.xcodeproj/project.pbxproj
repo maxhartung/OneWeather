@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E731EF1F26DA9289003DEDFA /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E731EF1E26DA9289003DEDFA /* HomeViewModelDelegate.swift */; };
 		E762A96326DA733400D36A5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A96226DA733400D36A5E /* AppDelegate.swift */; };
 		E762A96526DA733400D36A5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A96426DA733400D36A5E /* SceneDelegate.swift */; };
 		E762A96726DA733400D36A5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A96626DA733400D36A5E /* HomeViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E731EF1E26DA9289003DEDFA /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		E762A95F26DA733400D36A5E /* OneWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E762A96226DA733400D36A5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E762A96426DA733400D36A5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E731EF1D26DA927D003DEDFA /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				E731EF1E26DA9289003DEDFA /* HomeViewModelDelegate.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		E762A95626DA733400D36A5E = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		E762A96126DA733400D36A5E /* OneWeather */ = {
 			isa = PBXGroup;
 			children = (
+				E731EF1D26DA927D003DEDFA /* Interface */,
 				E765AE1D26DA74D3003EC79E /* Services */,
 				E762A99526DA745900D36A5E /* ViewControllers */,
 				E762A99426DA744D00D36A5E /* Models */,
@@ -314,6 +325,7 @@
 				E762A96726DA733400D36A5E /* HomeViewController.swift in Sources */,
 				E762A96326DA733400D36A5E /* AppDelegate.swift in Sources */,
 				E762A96526DA733400D36A5E /* SceneDelegate.swift in Sources */,
+				E731EF1F26DA9289003DEDFA /* HomeViewModelDelegate.swift in Sources */,
 				E765AE2326DA7628003EC79E /* Constants.swift in Sources */,
 				E765AE2126DA75FC003EC79E /* Geolocation.swift in Sources */,
 				E765AE1C26DA74CC003EC79E /* HomeViewModel.swift in Sources */,

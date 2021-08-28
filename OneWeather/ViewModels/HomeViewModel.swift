@@ -4,10 +4,14 @@ import Combine
 
 class HomeViewModel : NSObject, CLLocationManagerDelegate{
     
+    // MARK:- Properties
+    
     var manager : CLLocationManager!
     
     @Published
     var weather : Weather?
+    
+    var delegate : HomeViewModelDelegate?
     
     override init() {
         super.init()
@@ -16,6 +20,8 @@ class HomeViewModel : NSObject, CLLocationManagerDelegate{
         checkPermissions()
     }
     
+    // MARK:- Location Handlers
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let longitude = locations[0].coordinate.longitude
@@ -29,12 +35,14 @@ class HomeViewModel : NSObject, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+        delegate?.showMessage(message: error.localizedDescription)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
        checkPermissions()
     }
+    
+    // MARK:- Functions
     
     func checkPermissions(){
         switch manager.authorizationStatus {
