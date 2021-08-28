@@ -11,7 +11,8 @@ class APICaller {
             URLQueryItem(name: "appid", value: Constants.API_KEY),
             URLQueryItem(name: "lon", value: String(location.longitude)),
             URLQueryItem(name: "lat", value: String(location.latitude)),
-            URLQueryItem(name: "exclude", value: "minutely,daily,alerts")
+            URLQueryItem(name: "exclude", value: "minutely,daily,alerts"),
+            URLQueryItem(name: "units", value: "metric")
         ]
         
         let urlRequest = URLRequest(url: urlComponents.url!)

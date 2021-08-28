@@ -7,6 +7,16 @@ class HomeViewController: UIViewController, HomeViewModelDelegate {
     
     let currentTemp : UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 32)
+        return label
+    }()
+    
+    let currentLocationName : UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor(red: 178/255, green: 100/255, blue: 77/255, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         return label
     }()
     
@@ -23,9 +33,15 @@ class HomeViewController: UIViewController, HomeViewModelDelegate {
         
         viewModel.delegate = self
         viewModel.$weather.receive(on: DispatchQueue.main).compactMap({$0}).sink{ data in
-            self.currentTemp.text = String(data!.current.temp)
+            self.currentTemp.text = String(Int(data.current.temp.rounded())) + " °C"
+        }.store(in: &cancellable)
+        
+        viewModel.$locationName.receive(on: DispatchQueue.main).sink { name in
+            self.currentLocationName.text = name.uppercased()
         }.store(in: &cancellable)
     }
+    
+    //178,100,77
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -42,12 +58,21 @@ class HomeViewController: UIViewController, HomeViewModelDelegate {
     func setupViews(){
         view.backgroundColor = .systemBackground
         view.addSubview(currentTemp)
+        view.addSubview(currentLocationName)
     }
     
     func setupConstraints(){
         currentTemp.translatesAutoresizingMaskIntoConstraints = false
-        currentTemp.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        currentTemp.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        currentLocationName.translatesAutoresizingMaskIntoConstraints = false
+        currentTemp.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
+        
+        currentTemp.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        currentTemp.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        
+        currentLocationName.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        currentLocationName.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+
+        currentLocationName.topAnchor.constraint(equalTo: currentTemp.bottomAnchor, constant: 120).isActive = true
     }
     
     // MARK:- Handlers

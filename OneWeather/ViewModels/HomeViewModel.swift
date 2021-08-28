@@ -11,6 +11,9 @@ class HomeViewModel : NSObject, CLLocationManagerDelegate{
     @Published
     var weather : Weather?
     
+    @Published
+    var locationName : String = ""
+    
     var delegate : HomeViewModelDelegate?
     
     override init() {
@@ -28,6 +31,20 @@ class HomeViewModel : NSObject, CLLocationManagerDelegate{
         let latitude = locations[0].coordinate.latitude
         
         let geolocation = Geolocation(longitude: longitude, latitude: latitude)
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        
+        center.latitude = latitude
+        center.longitude = longitude
+        
+        let loc: CLLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
+        
+        let geoCoder: CLGeocoder = CLGeocoder()
+
+        geoCoder.reverseGeocodeLocation(loc) { [weak self] placemarks, error  in
+            guard let placemark = placemarks?[0], error == nil else { return }
+            
+            self?.locationName = placemark.locality ?? placemark.subLocality ?? ""
+        }
         
         APICaller.shared.fetchWeather(for: geolocation) { weather in
             self.weather = weather
